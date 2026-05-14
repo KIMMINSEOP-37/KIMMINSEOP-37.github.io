@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minseop Kim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #faf9f7;
+      --bg2: #f3f1ec;
+      --border: #e8e6e1;
+      --text: #1a1917;
+      --muted: #999;
+      --faint: #ccc;
+      --accent: #534AB7;
+      --accent-bg: #EEEDFE;
+      --accent-border: #d0c9f5;
+      --green: #3B6D11;
+      --green-bg: #EAF3DE;
+      --green-dot: #639922;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      min-height: 100vh;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    @keyframes fadeIn { to { opacity: 1; } }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      color: var(--muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-left {
+      padding: 3.5rem 2.5rem;
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .available-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.75rem;
+      color: var(--green);
+      background: var(--green-bg);
+      padding: 0.3rem 0.8rem;
+      border-radius: 100px;
+      width: fit-content;
+    }
+
+    .available-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--green-dot);
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(2.4rem, 5vw, 3.4rem);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-top: 1.5rem;
+    }
+
+    .hero-name em {
+      font-style: italic;
+      color: var(--muted);
+    }
+
+    .hero-role {
+      font-size: 0.8rem;
+      color: var(--faint);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 0.8rem;
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      color: #777;
+      line-height: 1.8;
+      max-width: 360px;
+    }
+
+    .hero-right {
+      padding: 3.5rem 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      gap: 1.5rem;
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .stat {
+      background: var(--bg);
+      padding: 1.2rem 1.4rem;
+    }
+
+    .stat-num {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      color: var(--text);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-label {
+      font-size: 0.72rem;
+      color: var(--faint);
+      letter-spacing: 0.04em;
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      font-size: 0.82rem;
+      padding: 0.65rem 1.3rem;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: 'DM Sans', sans-serif;
+      border: 1px solid;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-dark { background: var(--text); color: var(--bg); border-color: var(--text); }
+    .btn-dark:hover { background: #333; border-color: #333; }
+
+    .btn-outline { background: transparent; color: var(--muted); border-color: var(--border); }
+    .btn-outline:hover { border-color: #aaa; color: var(--text); }
+
+    /* SECTION */
+    section {
+      padding: 2.5rem 2.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 0.68rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .section-more {
+      font-size: 0.78rem;
+      color: var(--faint);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .section-more:hover { color: var(--text); }
+
+    /* PROJECTS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .project-card {
+      background: var(--bg);
+      padding: 1.4rem;
+      transition: background 0.15s;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+
+    .project-card:hover { background: var(--bg2); }
+
+    .proj-year {
+      font-size: 0.68rem;
+      color: var(--faint);
+      margin-bottom: 0.6rem;
+      letter-spacing: 0.05em;
+    }
+
+    .proj-name {
+      font-family: 'DM Serif Display', serif;
+      font-size: 1.05rem;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+
+    .proj-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      line-height: 1.65;
+      margin-bottom: 1rem;
+    }
+
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+
+    .tag {
+      font-size: 0.65rem;
+      background: var(--bg2);
+      color: #888;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+    }
+
+    /* SKILLS */
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+    .skill {
+      font-size: 0.8rem;
+      padding: 0.45rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 100px;
+      color: #777;
+      background: #fff;
+      transition: border-color 0.15s;
+    }
+
+    .skill:hover { border-color: #bbb; }
+
+    .skill.hi {
+      border-color: var(--accent-border);
+      color: var(--accent);
+      background: var(--accent-bg);
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .about-text {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.85;
+    }
+
+    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
+
+    .exp-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .exp-role { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+    .exp-place { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
+    .exp-year { font-size: 0.75rem; color: var(--faint); }
+
+    /* CONTACT */
+    .contact-box {
+      background: var(--text);
+      color: var(--bg);
+      border-radius: 16px;
+      padding: 3rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+    }
+
+    .contact-heading {
+      font-family: 'DM Serif Display', serif;
+      font-size: 2rem;
+      line-height: 1.2;
+    }
+
+    .contact-heading em { font-style: italic; color: #aaa; }
+
+    .btn-light {
+      background: var(--bg);
+      color: var(--text);
+      border: none;
+      font-size: 0.85rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 100px;
+      cursor: pointer;
+      font-family: 'DM Sans', sans-serif;
+      text-decoration: none;
+      display: inline-block;
+      transition: opacity 0.15s;
+    }
+
+    .btn-light:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      padding: 1.4rem 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-copy { font-size: 0.75rem; color: var(--faint); }
+
+    .socials { display: flex; gap: 1.2rem; }
+
+    .socials a {
+      font-size: 0.75rem;
+      color: var(--faint);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .socials a:hover { color: var(--text); }
+
+    /* RESPONSIVE */
+    @media (max-width: 700px) {
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { border-right: none; border-bottom: 1px solid var(--border); }
+      .projects-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; }
+      nav { padding: 1rem 1.25rem; }
+      section, .hero-left, .hero-right { padding: 2rem 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a class="logo" href="#">Minseop Kim</a>
+    <ul class="nav-links">
+      <li><a href="#work">work</a></li>
+      <li><a href="#about">about</a></li>
+      <li><a href="#contact">contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-left">
+      <div>
+        <span class="available-badge">
+          <span class="available-dot"></span>
+          Open to opportunities
+        </span>
+        <h1 class="hero-name">Developer<br><em>&amp; builder.</em></h1>
+        <p class="hero-role">Seoul, Korea · 2025</p>
+      </div>
+      <!-- 한 줄 소개를 여기에 입력하세요 -->
+      <p class="hero-desc">
+        안녕하세요, Minseop Kim입니다.<br>
+        여기에 한 줄 소개를 적어주세요.
+      </p>
+    </div>
+
+    <div class="hero-right">
+      <div class="stat-grid">
+        <!-- 숫자는 본인 상황에 맞게 수정하세요 -->
+        <div class="stat">
+          <div class="stat-num">?+</div>
+          <div class="stat-label">years exp</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">?</div>
+          <div class="stat-label">projects</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">?</div>
+          <div class="stat-label">open source</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">?</div>
+          <div class="stat-label">github stars</div>
+        </div>
+      </div>
+      <div class="cta-row">
+        <a class="btn btn-dark" href="#work">프로젝트 보기 →</a>
+        <!-- 이메일 주소를 수정하세요 -->
+        <a class="btn btn-outline" href="mailto:your@email.com">이메일 보내기</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROJECTS -->
+  <section id="work">
+    <div class="section-head">
+      <span class="section-title">Selected work</span>
+      <a class="section-more" href="https://github.com/KIMMINSEOP-37" target="_blank">GitHub에서 더 보기 →</a>
+    </div>
+    <div class="projects-grid">
+      <!-- 프로젝트 카드 1 -->
+      <a class="project-card" href="#" target="_blank">
+        <p class="proj-year">202?</p>
+        <h3 class="proj-name">프로젝트 이름</h3>
+        <p class="proj-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
+        <div class="tag-row">
+          <span class="tag">기술1</span>
+          <span class="tag">기술2</span>
+        </div>
+      </a>
+      <!-- 프로젝트 카드 2 -->
+      <a class="project-card" href="#" target="_blank">
+        <p class="proj-year">202?</p>
+        <h3 class="proj-name">프로젝트 이름</h3>
+        <p class="proj-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
+        <div class="tag-row">
+          <span class="tag">기술1</span>
+          <span class="tag">기술2</span>
+        </div>
+      </a>
+      <!-- 프로젝트 카드 3 -->
+      <a class="project-card" href="#" target="_blank">
+        <p class="proj-year">202?</p>
+        <h3 class="proj-name">프로젝트 이름</h3>
+        <p class="proj-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
+        <div class="tag-row">
+          <span class="tag">기술1</span>
+          <span class="tag">기술2</span>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section>
+    <div class="section-head">
+      <span class="section-title">Skills</span>
+    </div>
+    <div class="skills-wrap">
+      <!-- hi 클래스 = 보라색 강조, 주요 스킬에 사용 -->
+      <span class="skill hi">주요 기술 1</span>
+      <span class="skill hi">주요 기술 2</span>
+      <span class="skill hi">주요 기술 3</span>
+      <span class="skill">기술 4</span>
+      <span class="skill">기술 5</span>
+      <span class="skill">기술 6</span>
+      <span class="skill">기술 7</span>
+      <span class="skill">기술 8</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-head">
+      <span class="section-title">About</span>
+    </div>
+    <div class="about-grid">
+      <!-- 자기소개를 여기에 입력하세요 -->
+      <p class="about-text">
+        여기에 자기소개를 적어주세요.<br><br>
+        어떤 개발자인지, 어떤 것에 관심이 있는지,<br>
+        어떤 방향으로 성장하고 싶은지 등을 담으면 좋아요.
+      </p>
+      <ul class="exp-list">
+        <!-- 경력/학력을 여기에 추가하세요 -->
+        <li class="exp-item">
+          <div>
+            <div class="exp-role">회사 / 학교 이름</div>
+            <div class="exp-place">직책 / 전공</div>
+          </div>
+          <span class="exp-year">202?</span>
+        </li>
+        <li class="exp-item">
+          <div>
+            <div class="exp-role">회사 / 학교 이름</div>
+            <div class="exp-place">직책 / 전공</div>
+          </div>
+          <span class="exp-year">202?</span>
+        </li>
+        <li class="exp-item">
+          <div>
+            <div class="exp-role">회사 / 학교 이름</div>
+            <div class="exp-place">직책 / 전공</div>
+          </div>
+          <span class="exp-year">202?</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-box">
+      <h2 class="contact-heading">같이 만들어봐요,<br><em>언제든 연락주세요.</em></h2>
+      <!-- 이메일 주소를 수정하세요 -->
+      <a class="btn-light" href="mailto:your@email.com">이메일 보내기 →</a>
+    </div>
+  </section>
+
+  <footer>
+    <span class="footer-copy">© 2025 Minseop Kim</span>
+    <div class="socials">
+      <a href="https://github.com/KIMMINSEOP-37" target="_blank">GitHub</a>
+      <!-- 링크가 있으면 추가하세요 -->
+      <a href="#" target="_blank">LinkedIn</a>
+      <a href="#" target="_blank">Blog</a>
+    </div>
+  </footer>
+
+</body>
+</html>
