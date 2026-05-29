@@ -5,281 +5,185 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Minseop Kim</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    :root {
-      --bg: #faf9f7;
-      --bg2: #f3f1ec;
-      --border: #e8e6e1;
-      --text: #1a1917;
-      --muted: #999;
-      --faint: #ccc;
-      --accent: #534AB7;
-      --accent-bg: #EEEDFE;
-      --accent-border: #d0c9f5;
-      --green: #3B6D11;
-      --green-bg: #EAF3DE;
-      --green-dot: #639922;
-    }
-
-    html { scroll-behavior: smooth; }
-
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: #fff;
+      color: #1a1917;
       font-family: 'DM Sans', sans-serif;
-      font-weight: 400;
-      min-height: 100vh;
-      opacity: 0;
-      animation: fadeIn 0.6s ease forwards;
+      font-size: 15px;
+      line-height: 1.7;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem 5rem;
     }
-
-    @keyframes fadeIn { to { opacity: 1; } }
 
     /* NAV */
     nav {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      padding: 1.4rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      background: var(--bg);
-      z-index: 10;
+      align-items: baseline;
+      margin-bottom: 3.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid #eee;
     }
 
-    .logo {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.1rem;
-      color: var(--text);
+    .nav-name {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #1a1917;
       text-decoration: none;
     }
 
     .nav-links {
       display: flex;
-      gap: 2rem;
+      gap: 1.5rem;
       list-style: none;
     }
 
     .nav-links a {
       font-size: 0.82rem;
-      color: var(--muted);
-      text-decoration: none;
-      letter-spacing: 0.04em;
-      transition: color 0.2s;
-    }
-
-    .nav-links a:hover { color: var(--text); }
-
-    /* HERO */
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .hero-left {
-      padding: 3.5rem 2.5rem;
-      border-right: 1px solid var(--border);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      gap: 2rem;
-    }
-
-    .available-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      color: var(--green);
-      background: var(--green-bg);
-      padding: 0.3rem 0.8rem;
-      border-radius: 100px;
-      width: fit-content;
-    }
-
-    .available-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--green-dot);
-    }
-
-    .hero-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: clamp(2.4rem, 5vw, 3.4rem);
-      line-height: 1.1;
-      letter-spacing: -0.02em;
-      color: var(--text);
-      margin-top: 1.5rem;
-    }
-
-    .hero-name em {
-      font-style: italic;
-      color: var(--muted);
-    }
-
-    .hero-role {
-      font-size: 0.8rem;
-      color: var(--faint);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-top: 0.8rem;
-    }
-
-    .hero-desc {
-      font-size: 0.9rem;
-      color: #777;
-      line-height: 1.8;
-      max-width: 360px;
-    }
-
-    .hero-right {
-      padding: 3.5rem 2.5rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      gap: 1.5rem;
-    }
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
-    }
-
-    .stat {
-      background: var(--bg);
-      padding: 1.2rem 1.4rem;
-    }
-
-    .stat-num {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      color: var(--text);
-      line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-
-    .stat-label {
-      font-size: 0.72rem;
-      color: var(--faint);
-      letter-spacing: 0.04em;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-    }
-
-    .btn {
-      font-size: 0.82rem;
-      padding: 0.65rem 1.3rem;
-      border-radius: 100px;
-      cursor: pointer;
-      transition: all 0.15s;
-      font-family: 'DM Sans', sans-serif;
-      border: 1px solid;
-      text-decoration: none;
-      display: inline-block;
-    }
-
-    .btn-dark { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .btn-dark:hover { background: #333; border-color: #333; }
-
-    .btn-outline { background: transparent; color: var(--muted); border-color: var(--border); }
-    .btn-outline:hover { border-color: #aaa; color: var(--text); }
-
-    /* SECTION */
-    section {
-      padding: 2.5rem 2.5rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-title {
-      font-size: 0.68rem;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--faint);
-    }
-
-    .section-more {
-      font-size: 0.78rem;
-      color: var(--faint);
+      color: #999;
       text-decoration: none;
       transition: color 0.15s;
     }
 
-    .section-more:hover { color: var(--text); }
+    .nav-links a:hover, .nav-links a.active { color: #1a1917; }
+
+    /* PROFILE */
+    .profile {
+      display: grid;
+      grid-template-columns: 1fr 160px;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
+      align-items: start;
+    }
+
+    .profile-photo {
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      object-fit: cover;
+    }
+
+    .profile-photo-placeholder {
+      width: 160px;
+      height: 160px;
+      border-radius: 12px;
+      background: #f5f3ef;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #bbb;
+      font-size: 0.78rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: 'Crimson Pro', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.4rem;
+    }
+
+    .profile-role {
+      font-size: 0.82rem;
+      color: #999;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+    }
+
+    .profile-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-links a {
+      font-size: 0.82rem;
+      color: #555;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 1px;
+      transition: border-color 0.15s, color 0.15s;
+    }
+
+    .profile-links a:hover { color: #1a1917; border-color: #1a1917; }
+
+    .bio {
+      font-size: 0.9rem;
+      color: #444;
+      line-height: 1.8;
+    }
+
+    /* SECTION */
+    .section { margin-bottom: 2.8rem; }
+
+    .section-title {
+      font-family: 'Crimson Pro', serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 1.2rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid #eee;
+    }
 
     /* PROJECTS */
-    .projects-grid {
+    .project-item {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      overflow: hidden;
+      grid-template-columns: 72px 1fr;
+      gap: 1rem;
+      margin-bottom: 1.4rem;
+      padding-bottom: 1.4rem;
+      border-bottom: 1px solid #f5f5f5;
     }
 
-    .project-card {
-      background: var(--bg);
-      padding: 1.4rem;
-      transition: background 0.15s;
-      text-decoration: none;
+    .project-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+    .project-year {
+      font-size: 0.75rem;
+      color: #bbb;
+      padding-top: 0.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .project-name {
+      font-weight: 500;
+      font-size: 0.92rem;
+      margin-bottom: 0.2rem;
+      color: #1a1917;
+    }
+
+    .project-name a {
       color: inherit;
-      display: block;
+      text-decoration: none;
+      border-bottom: 1px solid #ddd;
+      transition: border-color 0.15s;
     }
 
-    .project-card:hover { background: var(--bg2); }
+    .project-name a:hover { border-color: #1a1917; }
 
-    .proj-year {
-      font-size: 0.68rem;
-      color: var(--faint);
-      margin-bottom: 0.6rem;
-      letter-spacing: 0.05em;
-    }
-
-    .proj-name {
-      font-family: 'DM Serif Display', serif;
-      font-size: 1.05rem;
-      color: var(--text);
-      margin-bottom: 0.5rem;
-      line-height: 1.3;
-    }
-
-    .proj-desc {
-      font-size: 0.78rem;
-      color: var(--muted);
+    .project-desc {
+      font-size: 0.82rem;
+      color: #777;
       line-height: 1.65;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
 
     .tag-row { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 
     .tag {
-      font-size: 0.65rem;
-      background: var(--bg2);
+      font-size: 0.68rem;
+      background: #f5f3ef;
       color: #888;
-      padding: 0.2rem 0.55rem;
+      padding: 0.15rem 0.5rem;
       border-radius: 4px;
     }
 
@@ -288,291 +192,152 @@
 
     .skill {
       font-size: 0.8rem;
-      padding: 0.45rem 1rem;
-      border: 1px solid var(--border);
+      padding: 0.35rem 0.9rem;
+      border: 1px solid #e8e6e1;
       border-radius: 100px;
-      color: #777;
-      background: #fff;
-      transition: border-color 0.15s;
+      color: #666;
     }
-
-    .skill:hover { border-color: #bbb; }
 
     .skill.hi {
-      border-color: var(--accent-border);
-      color: var(--accent);
-      background: var(--accent-bg);
+      border-color: #c8d8f0;
+      color: #2a5fab;
+      background: #eef3fc;
     }
 
-    /* ABOUT */
-    .about-grid {
+    /* NEWS */
+    .news-item {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-
-    .about-text {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.85;
-    }
-
-    .exp-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; }
-
-    .exp-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .exp-item:last-child { border-bottom: none; padding-bottom: 0; }
-
-    .exp-role { font-size: 0.85rem; color: var(--text); font-weight: 500; }
-    .exp-place { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
-    .exp-year { font-size: 0.75rem; color: var(--faint); }
-
-    /* CONTACT */
-    .contact-box {
-      background: var(--text);
-      color: var(--bg);
-      border-radius: 16px;
-      padding: 3rem 2.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-    }
-
-    .contact-heading {
-      font-family: 'DM Serif Display', serif;
-      font-size: 2rem;
-      line-height: 1.2;
-    }
-
-    .contact-heading em { font-style: italic; color: #aaa; }
-
-    .btn-light {
-      background: var(--bg);
-      color: var(--text);
-      border: none;
+      grid-template-columns: 80px 1fr;
+      gap: 1rem;
+      margin-bottom: 0.7rem;
       font-size: 0.85rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 100px;
-      cursor: pointer;
-      font-family: 'DM Sans', sans-serif;
-      text-decoration: none;
-      display: inline-block;
-      transition: opacity 0.15s;
     }
 
-    .btn-light:hover { opacity: 0.85; }
+    .news-date { color: #bbb; font-size: 0.78rem; padding-top: 0.15rem; }
+    .news-text { color: #555; line-height: 1.65; }
+    .news-text strong { color: #1a1917; font-weight: 500; }
 
     /* FOOTER */
     footer {
-      padding: 1.4rem 2.5rem;
+      margin-top: 4rem;
+      padding-top: 1.2rem;
+      border-top: 1px solid #eee;
+      font-size: 0.75rem;
+      color: #bbb;
       display: flex;
       justify-content: space-between;
-      align-items: center;
     }
 
-    .footer-copy { font-size: 0.75rem; color: var(--faint); }
+    footer a { color: #bbb; text-decoration: none; }
+    footer a:hover { color: #555; }
 
-    .socials { display: flex; gap: 1.2rem; }
-
-    .socials a {
-      font-size: 0.75rem;
-      color: var(--faint);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
-    .socials a:hover { color: var(--text); }
-
-    /* RESPONSIVE */
-    @media (max-width: 700px) {
-      .hero { grid-template-columns: 1fr; }
-      .hero-left { border-right: none; border-bottom: 1px solid var(--border); }
-      .projects-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; }
-      nav { padding: 1rem 1.25rem; }
-      section, .hero-left, .hero-right { padding: 2rem 1.25rem; }
+    @media (max-width: 560px) {
+      .profile { grid-template-columns: 1fr; }
+      .profile-photo-placeholder { width: 100px; height: 100px; }
+      nav { flex-direction: column; gap: 0.8rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <a class="logo" href="#">Minseop Kim</a>
+    <a class="nav-name" href="#">Minseop Kim</a>
     <ul class="nav-links">
-      <li><a href="#work">work</a></li>
-      <li><a href="#about">about</a></li>
-      <li><a href="#contact">contact</a></li>
+      <li><a href="#" class="active">about</a></li>
+      <!-- CV 링크가 생기면 아래 주석 해제하고 링크 교체 -->
+      <!-- <li><a href="#">cv</a></li> -->
+      <li><a href="https://github.com/KIMMINSEOP-37" target="_blank">github</a></li>
     </ul>
   </nav>
 
-  <!-- HERO -->
-  <div class="hero">
-    <div class="hero-left">
-      <div>
-        <span class="available-badge">
-          <span class="available-dot"></span>
-          Open to opportunities
-        </span>
-        <h1 class="hero-name">Developer<br><em>&amp; builder.</em></h1>
-        <p class="hero-role">Seoul, Korea · 2025</p>
+  <!-- PROFILE -->
+  <div class="profile">
+    <div>
+      <h1>Minseop Kim</h1>
+      <!-- 소속/직책을 수정하세요 -->
+      <p class="profile-role">Developer · Seoul, Korea</p>
+      <div class="profile-links">
+        <!-- 이메일 수정 -->
+        <a href="mailto:your@email.com">your@email.com</a>
+        <a href="https://github.com/KIMMINSEOP-37" target="_blank">GitHub</a>
+        <!-- <a href="#">LinkedIn</a> -->
+        <!-- <a href="#">Blog</a> -->
       </div>
-      <!-- 한 줄 소개를 여기에 입력하세요 -->
-      <p class="hero-desc">
-        안녕하세요, Minseop Kim입니다.<br>
-        여기에 한 줄 소개를 적어주세요.
+      <!-- 자기소개 수정 -->
+      <p class="bio">
+        안녕하세요, 김민섭입니다.<br>
+        여기에 본인 소개를 적어주세요. 어떤 개발자인지, 어떤 것에 관심이 있는지, 현재 무엇을 하고 있는지 2~3문장으로 적으면 좋아요.
       </p>
     </div>
+    <!-- 프로필 사진이 생기면 아래 div를 img 태그로 교체하세요 -->
+    <!-- <img class="profile-photo" src="assets/profile.jpg" alt="Minseop Kim"> -->
+    <div class="profile-photo-placeholder">사진<br>추가 예정</div>
+  </div>
 
-    <div class="hero-right">
-      <div class="stat-grid">
-        <!-- 숫자는 본인 상황에 맞게 수정하세요 -->
-        <div class="stat">
-          <div class="stat-num">?+</div>
-          <div class="stat-label">years exp</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">?</div>
-          <div class="stat-label">projects</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">?</div>
-          <div class="stat-label">open source</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">?</div>
-          <div class="stat-label">github stars</div>
-        </div>
-      </div>
-      <div class="cta-row">
-        <a class="btn btn-dark" href="#work">프로젝트 보기 →</a>
-        <!-- 이메일 주소를 수정하세요 -->
-        <a class="btn btn-outline" href="mailto:your@email.com">이메일 보내기</a>
-      </div>
+  <!-- NEWS (선택 — 없애도 됨) -->
+  <div class="section">
+    <h2 class="section-title">News</h2>
+    <div class="news-item">
+      <span class="news-date">2025.05</span>
+      <span class="news-text"><strong>kimminseop-37.github.io</strong> 포트폴리오 사이트 오픈!</span>
     </div>
+    <!-- <div class="news-item">
+      <span class="news-date">2025.??</span>
+      <span class="news-text">새로운 소식을 여기에 추가하세요.</span>
+    </div> -->
   </div>
 
   <!-- PROJECTS -->
-  <section id="work">
-    <div class="section-head">
-      <span class="section-title">Selected work</span>
-      <a class="section-more" href="https://github.com/KIMMINSEOP-37" target="_blank">GitHub에서 더 보기 →</a>
-    </div>
-    <div class="projects-grid">
-      <!-- 프로젝트 카드 1 -->
-      <a class="project-card" href="#" target="_blank">
-        <p class="proj-year">202?</p>
-        <h3 class="proj-name">프로젝트 이름</h3>
-        <p class="proj-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
+  <div class="section">
+    <h2 class="section-title">Projects</h2>
+
+    <!-- 프로젝트 1 -->
+    <div class="project-item">
+      <span class="project-year">202?</span>
+      <div>
+        <p class="project-name">
+          <a href="#">프로젝트 이름</a>
+        </p>
+        <p class="project-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
         <div class="tag-row">
           <span class="tag">기술1</span>
           <span class="tag">기술2</span>
         </div>
-      </a>
-      <!-- 프로젝트 카드 2 -->
-      <a class="project-card" href="#" target="_blank">
-        <p class="proj-year">202?</p>
-        <h3 class="proj-name">프로젝트 이름</h3>
-        <p class="proj-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
+      </div>
+    </div>
+
+    <!-- 프로젝트 2 -->
+    <div class="project-item">
+      <span class="project-year">202?</span>
+      <div>
+        <p class="project-name"><a href="#">프로젝트 이름</a></p>
+        <p class="project-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
         <div class="tag-row">
           <span class="tag">기술1</span>
           <span class="tag">기술2</span>
         </div>
-      </a>
-      <!-- 프로젝트 카드 3 -->
-      <a class="project-card" href="#" target="_blank">
-        <p class="proj-year">202?</p>
-        <h3 class="proj-name">프로젝트 이름</h3>
-        <p class="proj-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
+      </div>
+    </div>
+
+    <!-- 프로젝트 3 -->
+    <div class="project-item">
+      <span class="project-year">202?</span>
+      <div>
+        <p class="project-name"><a href="#">프로젝트 이름</a></p>
+        <p class="project-desc">프로젝트에 대한 한 줄 설명을 여기에 적어주세요.</p>
         <div class="tag-row">
           <span class="tag">기술1</span>
           <span class="tag">기술2</span>
         </div>
-      </a>
+      </div>
     </div>
-  </section>
 
-  <!-- SKILLS -->
-  <section>
-    <div class="section-head">
-      <span class="section-title">Skills</span>
-    </div>
-    <div class="skills-wrap">
-      <!-- hi 클래스 = 보라색 강조, 주요 스킬에 사용 -->
-      <span class="skill hi">주요 기술 1</span>
-      <span class="skill hi">주요 기술 2</span>
-      <span class="skill hi">주요 기술 3</span>
-      <span class="skill">기술 4</span>
-      <span class="skill">기술 5</span>
-      <span class="skill">기술 6</span>
-      <span class="skill">기술 7</span>
-      <span class="skill">기술 8</span>
-    </div>
-  </section>
+  </div>
 
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="section-head">
-      <span class="section-title">About</span>
-    </div>
-    <div class="about-grid">
-      <!-- 자기소개를 여기에 입력하세요 -->
-      <p class="about-text">
-        여기에 자기소개를 적어주세요.<br><br>
-        어떤 개발자인지, 어떤 것에 관심이 있는지,<br>
-        어떤 방향으로 성장하고 싶은지 등을 담으면 좋아요.
-      </p>
-      <ul class="exp-list">
-        <!-- 경력/학력을 여기에 추가하세요 -->
-        <li class="exp-item">
-          <div>
-            <div class="exp-role">회사 / 학교 이름</div>
-            <div class="exp-place">직책 / 전공</div>
-          </div>
-          <span class="exp-year">202?</span>
-        </li>
-        <li class="exp-item">
-          <div>
-            <div class="exp-role">회사 / 학교 이름</div>
-            <div class="exp-place">직책 / 전공</div>
-          </div>
-          <span class="exp-year">202?</span>
-        </li>
-        <li class="exp-item">
-          <div>
-            <div class="exp-role">회사 / 학교 이름</div>
-            <div class="exp-place">직책 / 전공</div>
-          </div>
-          <span class="exp-year">202?</span>
-        </li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="contact-box">
-      <h2 class="contact-heading">같이 만들어봐요,<br><em>언제든 연락주세요.</em></h2>
-      <!-- 이메일 주소를 수정하세요 -->
-      <a class="btn-light" href="mailto:your@email.com">이메일 보내기 →</a>
-    </div>
-  </section>
 
   <footer>
-    <span class="footer-copy">© 2025 Minseop Kim</span>
-    <div class="socials">
-      <a href="https://github.com/KIMMINSEOP-37" target="_blank">GitHub</a>
-      <!-- 링크가 있으면 추가하세요 -->
-      <a href="#" target="_blank">LinkedIn</a>
-      <a href="#" target="_blank">Blog</a>
-    </div>
+    <span>© 2025 Minseop Kim</span>
+    <a href="https://github.com/KIMMINSEOP-37" target="_blank">KIMMINSEOP-37</a>
   </footer>
 
 </body>
